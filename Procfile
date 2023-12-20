@@ -1,0 +1,1 @@
+web gunicorn TutorMeA15.wsgi:application --log-file -

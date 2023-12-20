@@ -1,0 +1,53 @@
+{% extends 'tutor_me/base_start.html'%}
+{% load bootstrap5 %}
+
+{% load crispy_forms_tags %}      
+
+
+{% block content %}
+   
+<!--Register--> 
+
+<div class="container py-5">
+	<h1>How will you be using Tutor Me?</h1>
+	<div class="row justify-content-center">
+		<div class="col-8">
+	<form enctype="multipart/form-data" method="POST">
+		{% csrf_token %}
+        <h3>{{ register_form.Role }}</h3>
+		<br>
+		<h2> Next, tell us a bit more about yourself.</h2> 
+		<h6>This will help us facilitate good matches between tutors and students.</h6>
+		<br>
+        <h5>{{ register_form.name.label_tag }} </h5>{{ register_form.name}}
+		<br>
+        <h5>{{ register_form.year.label_tag }} </h5>{{ register_form.year}}
+		<br>
+        <h5>{{ register_form.major.label_tag }} </h5>{{ register_form.major}}
+		<br>
+		<h5>{{ register_form.about_me.label_tag}}  </h5>{{ register_form.about_me }}
+		<br>
+		<h5 style="margin-top: 10px;">{{ register_form.sm_platform.label_tag }} {{ register_form.sm_platform}}</h5>
+		
+		<h5 style="margin-top: 10px;">{{ register_form.social_media.label_tag }} {{ register_form.social_media}}</h5>
+		
+        <h5 style="margin-top: 10px;"> {{ register_form.phone_num.label_tag }} {{ register_form.phone_num}}</h5>
+
+		<h5 style="margin-left: 110px; margin-top: 15px;">{{ register_form.picture.label_tag }} {{ register_form.picture}}</h5>
+		<br>
+
+		<p style="color: rgb(194, 214, 232); font-size: smaller;">
+			Please note, the information you have entered above will be visible to all Tutor Me users. After registering for an account, your email will also be made visible. This is to allow prospective tutors and students to get in contact with ease. Please only register if you are comfortable with your information being used in this way and are willing to be contacted by other users. You will not be able to change this information after registration.
+		<br>
+		{{register_form.agree}} {{register_form.agree.label}}
+		</p>
+		
+        <button class="submit">Register</button><!-- 
+        <button class="button" type="submit">Register</button> -->
+		<!--<button class="btn btn-primary" type="submit">Register</button>-->
+	</form>
+</div>
+</div>
+</div>
+
+{% endblock %}

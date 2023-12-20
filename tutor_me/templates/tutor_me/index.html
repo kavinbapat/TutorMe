@@ -1,0 +1,13 @@
+{% extends 'tutor_me/base_start.html' %}
+{% load socialaccount %}
+{% load static %}
+{% load bootstrap5 %}
+
+{% block content %}
+    <div class="text-center">
+        <h1>Tutor Me</h1>
+        <img src="https://brandslogos.com/wp-content/uploads/thumbs/university-of-virginia-logo-vector.svg">
+        <h3>Need help with a class?<br>Want to help others succeed?<br>Either way, you're in the right place!</h3>
+        <a class="button" href="{% provider_login_url 'google' %}">Login With Google</a>
+    </div>
+{% endblock %}

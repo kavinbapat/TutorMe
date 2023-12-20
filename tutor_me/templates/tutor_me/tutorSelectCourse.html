@@ -1,0 +1,41 @@
+{% extends 'tutor_me/base_main.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load crispy_forms_tags %}
+
+{% block title %} <title>Create Session</title> {% endblock %}
+<head>
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+</head>
+
+{% block content %}
+<div class="container-fluid" style="background-color: aliceblue; min-height: 88vh;">
+    <div class="row justify-content-center">
+      <div class="col-8">
+        <h4 class="mt-2">Create a Tutoring Session for {{ course }}</h4>
+          <form method="post" >
+            {% csrf_token %}
+            <strong style="list-style: none; color:red; font-size:15px;">
+              {{ form.non_field_errors }}
+            </strong>
+              {% for field in form.visible_fields %}
+                <div style="margin-top: 5px;">
+                {{ field.label_tag }}
+                  {{ field }}
+                </div>
+              {%endfor%}
+                <button class="submit">Create Session</button>
+              
+            </form>
+            <br>
+            <!-- <a class=button href="{% url 'tutor_me:direct' %}" style="width:5%; height:min-content; text-align:center;font-size: small;padding-bottom: 2px;padding-top: 2px;padding-left: 0px;padding-right: 0px;">View My Sessions </a>
+           -->
+        </div>
+      </div>
+    </div>
+    
+    <!-- <iframe name="hiddenFrame" width="0" height="0" border="0" style="display: none;"></iframe> -->
+
+{% endblock%}

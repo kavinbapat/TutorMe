@@ -1,0 +1,41 @@
+{% extends 'tutor_me/base_main.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+{% block title %} <title>{{ subject_name }}</title> {% endblock %}
+{% block content %}
+<div class="container-fluid" style="background-color: aliceblue; min-height: 88vh;">
+    <h1>{{ subject_name }}</h1>
+    
+    {% if course_list|length > 0 %}
+    <form action="{% url 'tutor_me:search_course' course_subject=course_subject %}" method="get">
+        <input name="search" type="text" placeholder="Search for courses..." aria-label="Search" aria-describedby="search-addon" maxlength="100" style="width:400px;">
+        <button type="submit" style="background:#4b83ba; color: aliceblue; border:none; border-radius:3px; height: 30px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+        </button>
+    </form>
+    {%endif%}
+
+    {% if course_list|length < 1 %}
+    <br>
+    <h4>Oops! It looks like this department has no course offerings for the current semester. </h4>
+    <h5 style="color:black"> Are you sure this is what you were looking for?</h5>
+    <img src="{% static '' %}Tutor Me/static/tutor_me/images/uploads/tutoring-clipart.png" style="width: 150px; height: 150px; margin-bottom:10px ;"/>
+        <br> 
+        <a class=button href="{% url 'tutor_me:departments' %}">Take me back</a>
+    
+        
+        {%else%}
+        <div style="column-count : 2">
+        {% for course in course_list %}
+            <strong>
+                <a target="_self" class="dept_button" href="{% url 'tutor_me:courseinteract' course=course %}"> {{ course }} </a><br>
+            </strong>
+        {% endfor %}
+        {%endif%}
+    </div>
+</div>
+{% endblock %}
+

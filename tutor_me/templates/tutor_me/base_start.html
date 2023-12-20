@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+     <!-- 
+    {% bootstrap_messages %}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <meta charset="UTF-8">
+    <title>Tutor Me</title>
+</head>
+    <style>
+        body {
+            text-align: center;
+            background-color: rgb(16, 26, 61);
+            font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-weight:300;
+            position: relative;
+            margin: 0 auto;
+            min-height: 100vh;
+            }
+
+        h1 {
+            color: #4b83ba;
+            font-size: 400%;
+        }
+        
+        h2 {
+            color: #4b83ba;
+            font-size:250%;
+        }
+        
+        h3 {
+            color: rgb(255, 178, 84);
+        }
+        
+        h4 {
+            color: #4b83ba;
+            
+        }
+        h5 {
+            color: rgb(255, 178, 84);
+        } 
+        h6 {
+            color: #4b83ba;
+            font-size: larger;
+            
+        }
+        .button {
+                background-color: #4b83ba; 
+                border: none;
+                color: white;
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 12px;
+                transition-duration: 0.4s;
+                margin-top: 10px;
+        }
+        .button:hover {
+            background-color: rgb(255, 178, 84);
+            color: white;
+        }
+        .submit{
+        background-color: #4b83ba; 
+            border: none;
+            color: white;
+            padding: 5px 18px;
+            margin-top: 6px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+
+    }
+    .submit:hover {
+        background-color: rgb(255, 178, 84);
+    }
+    footer {
+        position: absolute;
+        margin-top: 50px;
+        padding: 0px 0px 0px 0px;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: rgb(80, 99, 130);
+        font-size:small;
+        }
+        img{
+            width: 250px;
+            height: auto;
+        }
+    </style>
+
+<div class="container-md"></div>
+<body>
+        {% block content %}
+
+        {% endblock content %}
+</body>
+<footer>
+    <div class="text-center">
+        Copyright © 2023 Joshua Seiden, Kavin Bapat, Calayjia Hamlin, Mohamed Gadelrab, and Rachel Ney-Grimm.
+        <br>
+        Created for CS 3240 Advanced Software Development, Spring 2023.
+        <br>
+    </div>
+</footer>
+</div>
+</html>

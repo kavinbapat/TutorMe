@@ -1,0 +1,148 @@
+{% extends 'tutor_me/base_main.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+
+{% block title %} <title>{{tutor.name}}</title> {% endblock %}
+{% block content %}
+
+
+<style>
+    .list-group-item{
+        color:rgb(170, 199, 224);
+        font-size: 90%;
+        background-color: rgb(10, 19, 52);
+    }
+    </style>
+
+<section id="about-section" class="pt-5 pb-5" style="margin-right: 0px; padding-right: 0px;">
+    <div class="container wrapabout">
+        <div class="row">
+            
+            {% if tutor_sessions|length > 0 %}
+            <div class="col-md-6 align-items-center justify-content-left d-flex mb-5 mb-lg-0">
+                <div class="blockabout">
+                    <div class="blockabout-inner text-center text-sm-start">
+                        <figure class="potoaboutwrap" style="overflow: hidden;">
+                            <img src="{% static '' %}{{ tutor.picture }}" style="width: 150px; height: 150px; object-fit:cover;  border-radius: 50%;"/>
+                        </figure>
+                        <div class="title-big pb-3 mb-3">
+                            <h3>{{ tutor.name }}</h3>                        
+                            {%if tutor.year%}
+                                <button class="flair-button1">{{tutor.year}}</button>
+                            {%endif%}
+                            {%if tutor.major%}
+                                <button class="flair-button2">{{tutor.major}}</button>
+                                <br>
+                            {%endif%}
+                            
+                        </div>
+                        <p class="description-p pe-0 pe-lg-0" 
+                        style="color:rgb(145, 175, 201);">
+                            {{ tutor.about_me }}
+                        </p>
+                        <div class="contact"> 
+                            <div class="card" style="text-align:center;" >
+                                <div class="card-body" >
+                            <h5>Contact</h5>
+                            <p style="color:rgb(170, 199, 224);">{%if tutor.sm_platform %}
+                                {%if tutor.social_media%}
+                                    {{tutor.sm_platform}} {{ tutor.social_media }}<br>
+                                {%endif%}
+                                {%endif%}
+                                {%if tutor.phone_num %}
+                             {{tutor.phone_num}}{%endif%}</p>
+                            <a type="button" class="btn btn-primary" style="padding-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; margin-right:2px" href="mailto:{{ tutor }}"><svg xmlns="http://www.w3.org/2000/svg" style="color: aliceblue;box-sizing: border-box; margin-left:1px" width="36" height="36" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+                                <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+                                <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+                            </svg></a></div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">              
+                <div class="row" style="padding-right:1px ;">
+                {% for session in tutor_sessions %}
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item"><a class="course-link" href="{% url 'tutor_me:courseinteract' course=session.course %}">{{ session.course }}</a></li>
+                                <li class="list-group-item">Hourly Rate: ${{ session.hourly_rate }}</li>
+
+                                <li class="list-group-item">
+                                    Time: {{ session.day }}s {{ session.start_time }} - {{ session.end_time }}</li>
+
+                                <li class="list-group-item">Location: {{ session.location }}</li>
+                                <li class="list-group-item">
+                                    {% if session.availability == 'Available' %}
+                                    <!-- {{ session.availability }} <br> -->
+                                    <a type="button" class="btn btn-success" href="{% url 'tutor_me:request_session' id=session.id %}">Request</a>
+                                    <!--<button type="submit" class="submit">Request</button>-->
+                                    {% elif session.availability == 'Accepted' %}
+                                    Not Available
+                                    {% else %}
+                                    Availability: {{session.availability }}
+                                    {% endif %}
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="col-lg-6 align-items-center justify-content-center d-flex mb-5 mb-lg-0">
+            <div class="blockabout">
+                <div class="blockabout-inner text-center text-sm-start">
+                    <figure class="potoaboutwrap" style="overflow: hidden;">
+                
+                        <img src="{% static '' %}{{ tutor.picture }}" style="width: 150px; height: 150px; object-fit:cover; border-radius: 50%;"/>
+                        <!--<img src="https://bootdey.com/image/400x700/FF7F50/000000" alt="potoabout" />-->
+                    </figure>
+                    <div class="title-big pb-3 mb-3" >
+                        <h3>{{tutor.name}}</h3>                        
+                        {%if tutor.year%}
+                            <button class="flair-button1">{{tutor.year}}</button>
+                        {%endif%}
+                        {%if tutor.major%}
+                            <button class="flair-button2">{{tutor.major}}</button>
+                        {%endif%}
+                        <br>
+                    </div>
+                    <p class="description-p pe-0 pe-lg-0" style="color:rgb(145, 175, 201)">
+                        {{tutor.about_me}}
+                    </p>
+                </div>
+            </div>
+        </div>            
+            <div class="col-md-6 align-items-center justify-content-center d-flex mb-5 mb-lg-0">
+                <div class="blockabout-inner text-center text-sm-start">
+                    <div class="contact"> 
+                        <div card>
+                        <div class="card-body" style="padding-left: 40px; padding-right: 40px;">
+                        <h5 style="font-size:x-large">Contact</h5>
+                        <p style="color:rgb(170, 199, 224);">{%if tutor.sm_platform %}
+                            {%if tutor.social_media%}
+                                {{tutor.sm_platform}} {{ tutor.social_media }}<br>
+                            {%endif%}
+                            {%endif%}
+                            {%if tutor.phone_num %}
+                         {{tutor.phone_num}}{%endif%}</p>
+                        <a type="button" class="btn btn-primary" style="padding-top:0px; padding-bottom:0px; padding-left:5px; padding-right:5px; margin-right:2px" href="mailto:{{ student }}"><svg xmlns="http://www.w3.org/2000/svg" style="color: aliceblue;box-sizing: border-box; margin-left:1px" width="36" height="36" fill="currentColor" class="bi bi-envelope-at" viewBox="0 0 16 16">
+                            <path d="M2 2a2 2 0 0 0-2 2v8.01A2 2 0 0 0 2 14h5.5a.5.5 0 0 0 0-1H2a1 1 0 0 1-.966-.741l5.64-3.471L8 9.583l7-4.2V8.5a.5.5 0 0 0 1 0V4a2 2 0 0 0-2-2H2Zm3.708 6.208L1 11.105V5.383l4.708 2.825ZM1 4.217V4a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v.217l-7 4.2-7-4.2Z"/>
+                            <path d="M14.247 14.269c1.01 0 1.587-.857 1.587-2.025v-.21C15.834 10.43 14.64 9 12.52 9h-.035C10.42 9 9 10.36 9 12.432v.214C9 14.82 10.438 16 12.358 16h.044c.594 0 1.018-.074 1.237-.175v-.73c-.245.11-.673.18-1.18.18h-.044c-1.334 0-2.571-.788-2.571-2.655v-.157c0-1.657 1.058-2.724 2.64-2.724h.04c1.535 0 2.484 1.05 2.484 2.326v.118c0 .975-.324 1.39-.639 1.39-.232 0-.41-.148-.41-.42v-2.19h-.906v.569h-.03c-.084-.298-.368-.63-.954-.63-.778 0-1.259.555-1.259 1.4v.528c0 .892.49 1.434 1.26 1.434.471 0 .896-.227 1.014-.643h.043c.118.42.617.648 1.12.648Zm-2.453-1.588v-.227c0-.546.227-.791.573-.791.297 0 .572.192.572.708v.367c0 .573-.253.744-.564.744-.354 0-.581-.215-.581-.8Z"/>
+                        </svg></a></button>
+                        <p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+{% endif %}
+    </div>
+</div>
+</section>
+{% endblock %}

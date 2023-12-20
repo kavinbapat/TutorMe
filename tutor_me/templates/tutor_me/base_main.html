@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
+    {% load static %}
+
+    <meta charset="UTF-8">
+    <link href=
+    "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+             rel="stylesheet"
+             integrity=
+    "sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+             crossorigin="anonymous"/>
+
+    <link rel="stylesheet" href="{% static 'tutor_me/css/stylesheet.css'%}" type="text/css">
+
+    {% block title %} {% endblock %}
+</head>
+
+<style>
+    body {
+        text-align: center;
+        background-color: rgb(16, 26, 61);
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        position: relative;
+        margin: 0 auto;
+        min-height: 100vh;
+        }
+
+    h1 {
+        color: #4b83ba;
+        font-size: 400%;
+    }
+    h3 {
+        color: rgb(255, 178, 84);
+    }
+    h5 {
+        color: #5c94cc;
+    }
+    .submit{
+        background-color: #4b83ba; 
+            border: none;
+            color: white;
+            padding: 5px 18px;
+            margin-top: 6px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+
+    }
+    .submit:hover {
+        width: 18rem;
+        background-color: rgb(255, 178, 84);
+    }
+    p{
+        color: white;
+    }
+    .button {
+            background-color: #4b83ba; 
+            border: none;
+            color: white;
+            padding: 13px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+    }
+    .button:hover {
+        background-color: rgb(255, 178, 84);
+        color: white;
+    }
+    .smaller_button {
+            background-color: #4b83ba; 
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            margin-bottom: 7px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 12px;
+            transition-duration: 0.4s;
+    }
+    .smaller_button:hover {
+        background-color: rgb(255, 178, 84);
+        color: white;
+    }
+    .dept_button {
+                background-color: aliceblue; /* Green */
+                border: none;
+                color: rgb(16, 26, 61);
+                padding: 15px 32px;
+                text-align: center;
+                text-decoration: none;
+                display: inline-block;
+                font-size: 16px;
+                border-radius: 12px;
+                transition-duration: 0.2s;
+        }
+        .dept_button:hover {
+            background-color: rgb(255, 178, 84);
+            color: rgb(16, 26, 61);
+        }
+    .card {
+        background-color: rgb(10, 19, 52);
+        letter-spacing: .8px;
+        
+        border-radius: 10px;
+
+    }
+    .card:hover {
+        cursor: default;
+
+    }
+    .list-group-item{
+        color:aliceblue;
+        background-color: rgb(10, 19, 52);
+    }
+    .row{
+            margin:auto;
+        }
+    footer {
+        padding: 0px 0px 0px 0px;
+        bottom: 0;
+        width: 100%;
+        height: 40px;
+        background: rgb(80, 99, 130);
+        font-size:small;
+        position: absolute;
+    }
+    img{
+        width: 250px;
+        height: auto;
+    }
+    .nav-link{
+        border: 1px solid rgb(18, 22, 49);
+        background-color:rgb(16, 26, 61);
+        font-size: larger;
+        color: aliceblue;
+        
+    }
+    .nav-item>a:hover {
+            color: #4b83ba;
+            
+        }
+    .prof-btn{
+        background-color: rgb(10, 19, 52);
+        border: none;
+        color: rgb(16, 26, 61);
+        padding: 10px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 12px;
+        transition-duration: 0.2s;
+        }
+    .prof-btn:hover{
+        background-color: rgb(28, 41, 87);
+        color: rgb(16, 26, 61);
+        }
+    .mail-btn{
+        background-color: rgb(10, 19, 52);
+        border: none;
+        color: rgb(16, 26, 61);
+        padding: 2px 10px 2px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        border-radius: 5px;
+        transition-duration: 0.2s;
+        }
+    .mail-btn:hover{
+        background-color:rgb(28, 41, 87);
+        color: rgb(16, 26, 61);
+        }
+    .small-middle-container{
+	margin: auto;
+	width: 60%;
+    color:rgb(194, 214, 232);
+    }
+.delete-button {
+  background-color: rgb(16, 26, 61); 
+  color: rgb(228, 211, 211); 
+  border:1px solid #970800; 
+  padding: 10px 20px; 
+  border-radius: 5px; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
+  
+}
+.delete-button:hover {
+  background-color: #97080067; 
+}
+.flair-button1 {
+  background-color: #00c3ff81;
+  color: white;
+  padding: 1px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 9px;
+  border: none;
+  margin-right: 5px;
+}
+.flair-button1:hover {
+cursor: default;
+}
+.flair-button2 {
+  background-color: #967cc5;
+  color: white;
+  padding: 1px 7px;
+  font-size: 14px;
+  font-weight: bold;
+  border-radius: 9px;
+  border: none;
+  margin-right: 5px;
+}
+
+.flair-button2:hover {
+cursor: default;
+}
+
+.course-link{
+       color: inherit; 
+       text-decoration: none;
+    }
+    .course-link:hover{
+       color: rgb(255, 205, 145) ;
+       text-decoration: none;
+    }
+
+
+
+</style>    
+
+<div class="container-md"></div>
+<body>
+    {% block header %}    {% endblock header %} 
+    <nav class="nav nav-pills navbar-expand-sm"  style="    padding-top: 5px; 
+    padding-bottom: 5px;">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">  
+            <ul class="navbar-nav">
+                <li class="nav-item" style="padding-left:10px; padding-right: 15px;"> 
+                    <a class="nav-link  {% block nav_home %}{% endblock nav_home %}" {% block style %}{% endblock style %}  href="/direct"><svg xmlns="http://www.w3.org/2000/svg" style="box-sizing: border-box; padding-bottom: 7px;" width="26" height="26" fill="currentColor" class="bi bi-house-fill" viewBox="0 0 16 16">
+                    <path d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z"/>
+                    <path d="m8 3.293 6 6V13.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z"/>
+                  </svg> Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block nav_dept %}{% endblock nav_dept %}" {% block style1 %}{% endblock style1 %}  href="/departments">Course Finder <svg xmlns="http://www.w3.org/2000/svg" style="box-sizing: border-box; padding-bottom: 3px;" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                        <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                      </svg></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block nav_profile %}{% endblock nav_profile %}" {% block style2 %}{% endblock style2 %}  href="/direct/personal_profile_page">My Profile <svg xmlns="http://www.w3.org/2000/svg" style="box-sizing: border-box; padding-bottom: 3px;" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                      </svg></a>
+                    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% block nav_n%}{% endblock nav_n %}" {% block style3 %}{% endblock style3 %} href="{% url 'tutor_me:notification_history'%}">Notification History <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+                        <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2zM8 1.918l-.797.161A4.002 4.002 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4.002 4.002 0 0 0-3.203-3.92L8 1.917zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5.002 5.002 0 0 1 13 6c0 .88.32 4.2 1.22 6z"/>
+                      </svg></a>
+                </li>
+            </ul>
+        </div>  
+        <a class="nav-link " href="/"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" style="box-sizing: border-box; padding-bottom: 3px;" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0v2z"/>
+            <path fill-rule="evenodd" d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z"/>
+          </svg> Sign Out </a>
+    </nav>
+    
+
+    {% block content %}
+
+    {% endblock content %}
+
+
+</body>
+<br><br>
+<footer>
+    <div class="text-center">
+        Copyright © 2023 Joshua Seiden, Kavin Bapat, Calayjia Hamlin, Mohamed Gadelrab, and Rachel Ney-Grimm.
+        <br>
+        Created for CS 3240 Advanced Software Development, Spring 2023.
+        <br>
+    </div>
+</footer>
+</body>
+</div>
+
+</html>

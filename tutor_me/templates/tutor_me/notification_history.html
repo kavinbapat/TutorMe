@@ -1,0 +1,23 @@
+{% extends 'tutor_me/base_main.html' %}
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% load static %}
+{% block title %} <title> Notification history </title> {% endblock %}
+{% block nav_n %} active {% endblock nav_n %}
+{% block style3 %}style="color:rgb(16, 26, 61);  background-color:aliceblue;{% endblock style3 %} 
+{% block content %}
+
+<div class="notHistoryContainer">
+    <ul class="list-group">
+        {% for notification in past_notifications %}
+            <div class="pastNotification">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {{notification.text}}
+                    <span class="badge badge-primary badge-pill">{{notification.created_at}}</span>
+                </li>
+            </div>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock %}
